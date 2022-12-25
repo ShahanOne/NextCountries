@@ -1,0 +1,8 @@
+.card {
+  box-shadow: 50px;
+  padding: 5%;
+  background-color: aquamarine;
+  color: tomato;
+  font-size: 2rem;
+  width: 70%;
+}
