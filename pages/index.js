@@ -4,17 +4,45 @@ import { Imprima, Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 import CountryCard from '../components/CountryCard.jsx';
 import TopBar from '../components/TopBar';
+import SearchAndFilter from '../components/SearchAndFilter';
 import { useState } from 'react';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function Home({ countries }) {
   const [isDark, setDark] = useState(false);
+  const [searchedCountry, setSearchedCountry] = useState('');
+  const [input, setInput] = useState('');
 
   const isDarkTheme = (arg) => {
     setDark(arg);
+    // console.log(searchedCountry);
   };
 
+  //Card Search
+  function handleInput(event) {
+    const { value } = event.target;
+    setInput(value);
+  }
+
+  function handleSearchClick() {
+    countries.filter((searchedCountry) => {
+      if (
+        searchedCountry.name ===
+        input.charAt(0).toUpperCase() + input.slice(1)
+      ) {
+        setSearchedCountry(searchedCountry);
+
+        // console.log(searchedCountry);
+      } else if (!input) {
+        setSearchedCountry('');
+      }
+    });
+    console.log(searchedCountry);
+  }
+  function handleGoBack() {
+    setSearchedCountry('');
+    setInput('');
+    console.log(searchedCountry);
+  }
   return (
     <>
       <Head>
@@ -29,17 +57,36 @@ export default function Home({ countries }) {
           crossorigin="anonymous"
         />
       </Head>
-      <main className={!isDark ? styles.main : styles.mainDark}>
+      <main
+        className={`"container-fluid" ${
+          !isDark ? styles.main : styles.mainDark
+        }`}
+      >
         <TopBar isDarkTheme={isDarkTheme} />
-        <div className="row">
-          {countries.map((countryCard, index) => (
+        <SearchAndFilter
+          input={input}
+          handleInput={handleInput}
+          handleSearchClick={handleSearchClick}
+          handleGoBack={handleGoBack}
+        />
+        {!searchedCountry ? (
+          <div className="row">
+            {countries.map((countryCard, index) => (
+              <CountryCard
+                className={!isDark ? styles.countryCardDark : ''}
+                key={index}
+                country={countryCard}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="row">
             <CountryCard
+              country={searchedCountry}
               className={!isDark ? styles.countryCardDark : ''}
-              key={index}
-              country={countryCard}
             />
-          ))}
-        </div>
+          </div>
+        )}
       </main>
     </>
   );
@@ -56,3 +103,5 @@ export const getStaticProps = async () => {
     },
   };
 };
+
+// USE CONTEXT HOOK/ Context API

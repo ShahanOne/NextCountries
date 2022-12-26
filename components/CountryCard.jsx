@@ -1,22 +1,38 @@
 import styles from '../styles/CardStyles.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
+import TopBar from './TopBar';
+import { useState } from 'react';
 
 function CountryCard({ country }) {
+  const [isDark, setDark] = useState(false);
+
+  const isDarkTheme = (arg) => {
+    setDark(arg);
+    console.log(arg);
+  };
   return (
-    <Link
-      className={styles.link}
-      href="country/[name]"
-      as={`/country/${country.name}`}
-    >
-      <div className={`"col-lg-6" ${styles.card}`}>
-        <img className={styles.image} src={country.flag} />
-        <p className={styles.name}>{country.name}</p>
-        <p className={styles.para}>Population : {country.population}</p>
-        <p className={styles.para}>Region : {country.region}</p>
-        <p className={styles.para}>Capital : {country.capital}</p>
+    <>
+      {/* Just for theme data */}
+      <div className={styles.nodisplay}>
+        <TopBar isDarkTheme={isDarkTheme} />
       </div>
-    </Link>
+      {/* --------- */}
+      <Link
+        className={`"col-lg-3" ${!isDark ? styles.card : styles.cardDark}`}
+        href="country/[name]"
+        as={`/country/${country.name}`}
+      >
+        <div>
+          <img className={styles.image} src={country.flag} />
+
+          <p className={styles.name}>{country.name}</p>
+          <p className={styles.para}>Population : {country.population}</p>
+          <p className={styles.para}>Region : {country.region}</p>
+          <p className={styles.para}>Capital : {country.capital}</p>
+        </div>
+      </Link>
+    </>
   );
 }
 
