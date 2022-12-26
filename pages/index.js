@@ -11,13 +11,12 @@ export default function Home({ countries }) {
   const [isDark, setDark] = useState(false);
   const [searchedCountry, setSearchedCountry] = useState('');
   const [input, setInput] = useState('');
+  const [region, setRegion] = useState([]);
 
   const isDarkTheme = (arg) => {
     setDark(arg);
-    // console.log(searchedCountry);
   };
 
-  //Card Search
   function handleInput(event) {
     const { value } = event.target;
     setInput(value);
@@ -36,13 +35,17 @@ export default function Home({ countries }) {
         setSearchedCountry('');
       }
     });
-    console.log(searchedCountry);
   }
   function handleGoBack() {
     setSearchedCountry('');
     setInput('');
-    console.log(searchedCountry);
+    // console.log(searchedCountry);
   }
+
+  function handleRegion(arg) {
+    setRegion(arg);
+  }
+
   return (
     <>
       <Head>
@@ -65,12 +68,22 @@ export default function Home({ countries }) {
         <TopBar isDarkTheme={isDarkTheme} />
         <SearchAndFilter
           input={input}
+          data={countries}
           handleInput={handleInput}
           handleSearchClick={handleSearchClick}
           handleGoBack={handleGoBack}
+          region={handleRegion}
+          // click={handleClick}
         />
-        {!searchedCountry ? (
-          <div className="row">
+        {searchedCountry ? (
+          <div className="row container-fluid">
+            <CountryCard
+              country={searchedCountry}
+              className={!isDark ? styles.countryCardDark : ''}
+            />
+          </div>
+        ) : region.length === 0 ? (
+          <div className={'row container-fluid' + ` ${styles.cardsParent} `}>
             {countries.map((countryCard, index) => (
               <CountryCard
                 className={!isDark ? styles.countryCardDark : ''}
@@ -80,11 +93,14 @@ export default function Home({ countries }) {
             ))}
           </div>
         ) : (
-          <div className="row">
-            <CountryCard
-              country={searchedCountry}
-              className={!isDark ? styles.countryCardDark : ''}
-            />
+          <div className={'row container-fluid' + ` ${styles.cardsParent} `}>
+            {region.map((countryCard, index) => (
+              <CountryCard
+                className={!isDark ? styles.countryCardDark : ''}
+                key={index}
+                country={countryCard}
+              />
+            ))}
           </div>
         )}
       </main>

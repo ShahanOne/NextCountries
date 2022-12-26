@@ -4,7 +4,7 @@
   color: rgb(43, 39, 39);
 }
 .cardDark {
-  background-color: #44186f;
+  background-color: hsl(209, 23%, 22%);
   box-shadow: 12px;
   color: aliceblue;
 }

@@ -14,12 +14,12 @@ function CountryCard({ country }) {
   return (
     <>
       {/* Just for theme data */}
-      <div className={styles.nodisplay}>
+      {/* <div className={styles.nodisplay}>
         <TopBar isDarkTheme={isDarkTheme} />
-      </div>
+      </div> */}
       {/* --------- */}
       <Link
-        className={`"col-lg-3" ${!isDark ? styles.card : styles.cardDark}`}
+        className={'col-md-6' + ` ${!isDark ? styles.card : styles.cardDark} `}
         href="country/[name]"
         as={`/country/${country.name}`}
       >
