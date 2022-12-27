@@ -9,8 +9,9 @@ function CountryCard({ country }) {
 
   const isDarkTheme = (arg) => {
     setDark(arg);
-    console.log(arg);
   };
+  //   console.log(isDark);
+
   return (
     <>
       {/* Just for theme data */}

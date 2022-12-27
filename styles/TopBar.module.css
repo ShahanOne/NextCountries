@@ -9,18 +9,20 @@
   color: aliceblue;
 }
 .whereto {
-  font-size: 1.8rem;
+  margin-top: 1%;
+  font-size: 1.7rem;
   font-weight: 600;
-  font-family: cursive;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   margin-left: 1.5%;
   display: inline-block;
 }
 
 .button {
   display: inline-block;
-  border: 2px;
+  border: 1.6px solid;
   border-color: #f4bc2f;
-  background-color: #eaeaea89;
+  background-color: #eaeaea00;
   color: #ffd364;
   border-radius: 3px;
   height: 2.8rem;

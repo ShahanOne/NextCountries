@@ -11,13 +11,14 @@
   border-radius: 8px;
   padding-bottom: 2%;
 }
-.cardDark {
-  color: hsl(0, 100%, 100%);
+
+.cardLight {
+  color: rgb(5, 5, 5);
   padding: 0;
   margin: 2.8% 1% 2% 4.7%;
   height: 23rem;
   text-decoration: none;
-  background-color: #b784ff;
+  background-color: #e6e6e6;
   box-shadow: rgba(56, 55, 55, 0.15) 0px 5px 15px 7px;
   border-radius: 12px;
   padding-bottom: 2%;
@@ -42,6 +43,8 @@
 }
 .nodisplay {
   display: none;
+  width: 0;
+  height: 0;
 }
 
 @media (max-width: 1000px) {

@@ -1,0 +1,42 @@
+/* Card Preview */
+.backBtn {
+  background-color: hsl(209, 23%, 22%);
+  border-color: hsl(209, 23%, 22%);
+  color: white;
+  margin: 3%;
+  position: relative;
+  left: 5.3%;
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.topRow {
+  padding-top: 2%;
+  padding-bottom: 14%;
+}
+.imgDiv {
+  align-items: center;
+}
+.infoImg {
+  height: 20rem;
+  width: 30rem;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+.infoName {
+  color: #f6f5f5;
+  font-size: 2rem;
+  font-weight: 500;
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.infoPara {
+  color: #d3e0ea;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+.infoPara span {
+  color: #b2b1b9;
+}
+.borderPara {
+  color: #d3e0ea;
+}
