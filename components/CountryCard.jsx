@@ -25,7 +25,13 @@ function CountryCard({ country }) {
         as={`/country/${country.name}`}
       >
         <div>
-          <img className={styles.image} src={country.flag} />
+          <Image
+            className={styles.image}
+            src={country.flag}
+            height={160}
+            width={160}
+            alt="country-flag"
+          />
 
           <p className={styles.name}>{country.name}</p>
           <p className={styles.para}>Population : {country.population}</p>
